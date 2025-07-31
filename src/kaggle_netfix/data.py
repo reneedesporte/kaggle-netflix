@@ -60,8 +60,12 @@ def get_credits(title, titles, credits, content_id=None):
          is None.
         If `title` doesn't exist in `titles`.
     """
-    if content_id is None:
-        content_id = titles[titles["title"] == title]["id"]
+    if content_id is not None:
+        assert content_id in titles[titles["title"] == title]["id"].values, (
+            "Provided `content_id` does not match provided `title`."
+        )
+        return credits[credits["id"] == content_id]
+    content_id = titles[titles["title"] == title]["id"]
     if len(content_id) == 0:
         raise KeyError(
             f'"{title}" does not exist in `titles`.'
