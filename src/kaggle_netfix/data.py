@@ -58,11 +58,17 @@ def get_credits(title, titles, credits, content_id=None):
     KeyError
         If `title` isn't unique in `titles` and `content_id`
          is None.
+        If `title` doesn't exist in `titles`.
     """
     if content_id is None:
         content_id = titles[titles["title"] == title]["id"]
-    assert len(content_id) == 1, (
-        f'"{title}" is not a unique title. Please provide a `content_id`.'
-    )
+    if len(content_id) == 0:
+        raise KeyError(
+            f'"{title}" does not exist in `titles`.'
+        )
+    if len(content_id) != 1:
+        raise KeyError(
+            f'"{title}" is not a unique title. Please provide a `content_id`.'
+        )
     content_id = content_id.values[0]
     return credits[credits["id"] == content_id]
