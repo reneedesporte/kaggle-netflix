@@ -191,7 +191,7 @@ wheels = [
 ]
 
 [[package]]
-name = "kaggle-netflix"
+name = "kaggle_netflix"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

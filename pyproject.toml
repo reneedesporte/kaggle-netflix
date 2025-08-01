@@ -1,5 +1,5 @@
 [project]
-name = "kaggle-netflix"
+name = "kaggle_netflix"
 version = "0.1.0"
 description = "Visualize and draw conclusions from a Kaggle Netflix dataset."
 readme = "README.md"
